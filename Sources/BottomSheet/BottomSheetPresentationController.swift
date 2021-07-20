@@ -74,17 +74,25 @@ public final class BottomSheetPresentationController: UIPresentationController {
         guard let presentedController = presentedViewController as? BottomSheetViewController else { return .toSafeAreaTop }
         return presentedController.sheetSizingStyle
     }
+    
+    var backdropVisualEffect: UIVisualEffect? {
+        guard let presentedController = presentedViewController as? BottomSheetViewController else { return nil }
+        return presentedController.backdropVisualEffect
+    }
   
     // MARK: - UI Elements
   
     /// The blur view showing as the background of the bottom sheet.
     private lazy var dimmingView: UIVisualEffectView = {
-        let effect: UIBlurEffect
-    
-        if #available(iOS 13.0, *) {
-            effect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let effect: UIVisualEffect
+        if let backdropEffect = backdropVisualEffect {
+            effect = backdropEffect
         } else {
-            effect = UIBlurEffect(style: .regular)
+            if #available(iOS 13.0, *) {
+                effect = UIBlurEffect(style: .systemUltraThinMaterial)
+            } else {
+                effect = UIBlurEffect(style: .regular)
+            }
         }
     
         let view = UIVisualEffectView(effect: effect)

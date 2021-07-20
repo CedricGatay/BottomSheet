@@ -60,6 +60,8 @@ public final class BottomSheetView: UIView {
       default: return 0
     }
   }
+    
+  var backdropVisualEffect: UIVisualEffect?
   
   // MARK: - Anchors
   

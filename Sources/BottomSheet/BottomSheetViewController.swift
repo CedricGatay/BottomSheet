@@ -46,6 +46,11 @@ public final class BottomSheetViewController: UIViewController {
     get { bottomSheetView.contentInsets }
     set { bottomSheetView.contentInsets = newValue }
   }
+    
+    public var backdropVisualEffect: UIVisualEffect? {
+        get { bottomSheetView.backdropVisualEffect }
+        set { bottomSheetView.backdropVisualEffect = newValue }
+    }
   
   // MARK: - Init
   
