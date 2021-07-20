@@ -81,7 +81,7 @@ public final class BottomSheetViewController: UIViewController {
   
   private func setup() {
     modalPresentationStyle = .custom
-    transitioningDelegate = (UIApplication.shared.delegate as? BottomSheetPresenter)?.bottomSheetTransitioningDelegate
+   // transitioningDelegate = (UIApplication.shared.delegate as? BottomSheetPresenter)?.bottomSheetTransitioningDelegate
   }
 }
 #endif
