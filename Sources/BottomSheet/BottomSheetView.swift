@@ -18,7 +18,7 @@ public final class BottomSheetView: UIView {
   /// The corner radius of the bottom sheet.
   public var cornerRadius: CGFloat = 16 {
     willSet {
-      layer.cornerRadius = newValue
+      roundTopCorners(newValue)
     }
   }
   
