@@ -50,7 +50,7 @@ public final class BottomSheetView: UIView {
   
   /// The total bottom inset taking safe area into consideration.
   private var bottomInset: CGFloat {
-    safeAreaInsets.bottom + contentInsets.bottom
+      viewSafeAreaInsets.bottom + contentInsets.bottom
   }
   
   /// The inset at the bottom of the handle.
@@ -65,7 +65,7 @@ public final class BottomSheetView: UIView {
   
   /// Anchors the top of the `contentView` to its superview
   lazy var contentViewTopAnchor: NSLayoutConstraint = {
-    contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: contentInsets.top)
+    contentView.topAnchor.constraint(equalTo: viewSafeAreaLayoutGuide.topAnchor, constant: contentInsets.top)
   }()
   
   /// Anchors the top of `contentView` to the bottom of `dragHandle`. Used for `outside` handle style.
@@ -158,7 +158,7 @@ public final class BottomSheetView: UIView {
   
   public override func safeAreaInsetsDidChange() {
     // Need to change the bottom anchor constant because safe area layout guide gets disabled when the frame is moved
-    if safeAreaInsets.bottom > -contentViewBottomAnchor.constant {
+    if viewSafeAreaInsets.bottom > -contentViewBottomAnchor.constant {
       contentViewBottomAnchor.constant = -bottomInset
       setNeedsUpdateConstraints()
     }
